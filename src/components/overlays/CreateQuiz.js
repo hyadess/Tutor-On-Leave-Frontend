@@ -48,8 +48,8 @@ const CreateQuiz = (props) => {
                 topic: sessionName,
                 user_id: userId,
                 //isFree: paid === 'FREE',
-                //isAdvanced: hardness === 'ADVANCED',
-                //isTeacher: false
+                isAdvanced: hardness === 'ADVANCED',
+                total_questions: 7
             });
 
             props.toggleOverlay();

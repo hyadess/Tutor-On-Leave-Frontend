@@ -35,7 +35,9 @@ const GetSuggestion = (props) => {
 
             const response = await axios.post('http://127.0.0.1:8000/test/suggestion', {
                 topic: sessionName,
-                user_id: userId
+                user_id: userId,
+                type: 'code'
+
             });
             console.log(response);
             setSuggestions(response.data.suggestions);
