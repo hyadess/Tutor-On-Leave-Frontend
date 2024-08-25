@@ -84,7 +84,7 @@ const CreateQuiz = (props) => {
 
 
                     <div className='flex-div'>
-                        <div >
+                        <div className='w-[85%] h-[100%]'>
                             <textarea type="text" className="input-field"
                                 placeholder="Name your chatbot..."
                                 value={sessionName}
@@ -92,7 +92,7 @@ const CreateQuiz = (props) => {
                             />
                         </div>
                         <button className='name-submit-button' onClick={() => convoCreateRequest()}>
-                            <FontAwesomeIcon icon={faPaperPlane} size='2x' />
+                            <FontAwesomeIcon icon={faPaperPlane} size='1x' />
                         </button>
                     </div>
 

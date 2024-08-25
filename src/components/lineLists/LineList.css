@@ -1,12 +1,12 @@
 .convo-list-container{
-    padding: 20px;
+    /* padding: 20px; */
     
 }
 
 .convo-list-convo{
 
     background-color: #c4c4c434;
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 10px;
     text-align: left;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

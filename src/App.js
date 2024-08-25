@@ -8,6 +8,10 @@ import Convo from './pages/Convo';
 import Quiz from './pages/Quiz'
 import Lecture from './pages/Lecture';
 import AuthProvider, { useAuth } from './context/AuthContext';
+import Suggestion from './pages/Suggestion';
+import AllLecture from './pages/AllLecture';
+import AllQuiz from './pages/AllQuiz';
+import AllConvo from './pages/AllConvo';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { token } = useAuth();
@@ -34,6 +38,10 @@ function App() {
             <Route path="/conversation/:id" element={<Convo/>} />
             <Route path="/lecture/:id" element={<Lecture/>} />
             <Route path='/quiz/:id' element={<Quiz/>}/>
+            <Route path='/suggestion' element={<Suggestion/>}/>
+            <Route path='/allLectures' element={<AllLecture/>}/>
+            <Route path='/allquiz' element={<AllQuiz/>}/>
+            <Route path='/allconvo' element={<AllConvo/>}/>
           </Routes>
         </Router>
       </AuthProvider>

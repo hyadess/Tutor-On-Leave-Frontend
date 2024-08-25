@@ -8,7 +8,9 @@
 
 .suggestion-list-title-container {
     display: flex;
-    padding: 20px;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
 
 }
 
@@ -26,12 +28,12 @@
 
 
 .suggestion-see-all {
-    font-size: medium;
+    font-size: small;
     padding: 5px;
     padding-left: 12px;
     padding-right: 12px;
 
-    margin-left: 5px;
+    margin: 5px;
     border-radius: 20px;
 
     background-color: #b6b0b0fd;
@@ -52,7 +54,7 @@
 
 .suggestion-title-buttons {
     display: flex;
-    margin-left: 490px;
+    /* margin-left: 490px; */
 
 }
 
@@ -97,19 +99,18 @@
 .suggestion-list-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
 
 }
 
 .suggestion-container {
-    width: 23%;
+    width: 32%;
+    min-width: 250px;
     border: 1px solid #0f0f0f2c;
     margin: 3px;
     margin-bottom: 15px;
     border-radius: 30px;
     transition: 0.3s ease-in-out;
-
-
 }
 
 .suggestion-container:hover {
@@ -196,6 +197,7 @@
 
 .suggestion-lower-part {
     display: flex;
+    align-items: center;
     margin: 10px;
 }
 

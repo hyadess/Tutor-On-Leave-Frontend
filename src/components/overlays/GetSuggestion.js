@@ -100,8 +100,8 @@ const GetSuggestion = (props) => {
                             {/* <div className='session-text'>ENTER SESSION NAME</div> */}
 
 
-                            <div className='flex-div'>
-                                <div >
+                            <div className='flex-div pb-5'>
+                                <div className='w-[85%] h-[100%]'>
                                     <textarea type="text" className="input-field"
                                         placeholder="Topic for suggestion?..."
                                         value={sessionName}
@@ -109,7 +109,7 @@ const GetSuggestion = (props) => {
                                     />
                                 </div>
                                 <button className='name-submit-button' onClick={() => convoCreateRequest()}>
-                                    <FontAwesomeIcon icon={faPaperPlane} size='2x' />
+                                    <FontAwesomeIcon icon={faPaperPlane} size='1x' />
                                 </button>
                             </div>
 
