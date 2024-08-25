@@ -25,7 +25,8 @@
 }
 
 .tool-container{
-    width: 31%;
+    width: 32%;
+    min-width: 200px;
     /* border-left: 0.5px solid #24242454;
     border-right: 0.5px solid #24242454;    */
     margin-top: 10px;
@@ -40,24 +41,30 @@
 }
 
 .tool-text{
-    width: 70%;
+    width: 100%;
+    height: 150px;
     background-color: #f0f0f0cc;
     border-radius: 30px;
 }
 
 
 .tool-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: large;
+    height: 100%;
     padding: 10px;
     padding-left: 15px;
-    opacity: 0.6;
+    opacity: 0.8;
     color: rgb(255, 255, 255);
     font-weight: normal;
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
     background-color: rgba(0, 0, 0, 0.514);
     border-radius: 20px;
-    margin: 10px;
+   
     
 }
 

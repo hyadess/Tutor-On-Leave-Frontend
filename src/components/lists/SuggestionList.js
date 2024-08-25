@@ -11,6 +11,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './../../css/Toast.css';
+import Navbar from '../Navbar';
 
 //------------------------
 
@@ -18,7 +19,7 @@ import './../../css/Toast.css';
 const SuggestionList = (props) => {
     //useAuth for user id
     const { userId } = useAuth();
-
+    const navigate = useNavigate();
     // as props, we will get isAll ( for short list) and a suggestions list
     const [suggestions, setSuggestions] = useState([]);
 
@@ -207,6 +208,7 @@ const SuggestionList = (props) => {
 
     
     const allPressed = () => {
+        navigate(`/suggestion/`);
         console.log(props.isAll)
     }
 
@@ -215,16 +217,19 @@ const SuggestionList = (props) => {
 
         <div className='whole-thing-container'>
             <ToastContainer />
+            
 
             <div className='suggestion-list-title-container'>
-                <div className='suggestion-list-title'>
-                    PAST SUGGESTIONS
+                <div className='flex'>
+                    <div className='suggestion-list-title'>
+                        PAST SUGGESTIONS
+                    </div>
+                    {
+                        props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
+                            See All
+                        </div> : <></>
+                    }
                 </div>
-                {
-                    props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
-                        See All
-                    </div> : <></>
-                }
 
                 <div className='suggestion-title-buttons'>
                     <div className={`suggestion-title-button ${selected == 'all' ? 'selected' : ''}`} onClick={() => setSelected('all')}> All</div>
@@ -292,25 +297,12 @@ const SuggestionList = (props) => {
 
             </div>
 
-
             <div className='end-horizontal-line'>
 
             </div>
         </div>
-
-
-
-
-
-
+        
     );
-
-
-
-
-
-
-
 
 };
 
