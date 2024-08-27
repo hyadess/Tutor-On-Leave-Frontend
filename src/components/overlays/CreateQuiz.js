@@ -16,6 +16,7 @@ const CreateQuiz = (props) => {
     const [Loading, setLoading] = useState(false);
     const [paid, setPaid] = useState('FREE');
     const [hardness, setHardness] = useState('BEGINNER');
+    const [numOfQuestions, setNumOfQuestions] = useState(0);
 
     const togglePaid = () => {
         if (paid === 'FREE')
@@ -31,6 +32,13 @@ const CreateQuiz = (props) => {
             setHardness('BEGINNER')
     }
 
+
+    const handleChange = (e) => {
+        const value = parseInt(e.target.value, 10);
+        if (value >= 6 && value <= 12) {
+            setNumOfQuestions(e.target.value);
+        }
+    };
 
     const convoCreateRequest = async () => {
         try {
@@ -48,8 +56,8 @@ const CreateQuiz = (props) => {
                 topic: sessionName,
                 user_id: userId,
                 //isFree: paid === 'FREE',
-                //isAdvanced: hardness === 'ADVANCED',
-                //isTeacher: false
+                isAdvanced: hardness === 'ADVANCED',
+                total_questions: numOfQuestions
             });
 
             props.toggleOverlay();
@@ -102,6 +110,27 @@ const CreateQuiz = (props) => {
                         </div>
                         <div className={`create-convo-option ${hardness == 'BEGINNER' ? '' : 'red'}`} onClick={() => toggleHardness()}>
                             {hardness}
+                        </div>
+                        <div className='create-convo-option'>
+                            
+                            <input
+                                type="number"
+                                id="numberInput"
+                                value={numOfQuestions}
+                                min="6"
+                                max="12"
+                                onChange={handleChange}
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    border: 'none',
+                                    color: 'white', // Optional: Change text color for better readability
+                                    padding: '3px', // Optional: Add padding
+                                    outline: 'none', // Optional: Avoid default outline
+                                    fontWeight: 'bold', // Optional: Make text bold
+                                    //borderRadius: '4px' // Optional: Add rounded corners
+                                }}
+                            />
+                            
                         </div>
 
                     </div>

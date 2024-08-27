@@ -16,6 +16,7 @@ const GetSuggestion = (props) => {
     const [sessionName, setSessionName] = useState('');
     const [loading, setLoading] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
+    const [selected, setSelected] = useState('code')
     const [showSuggestions, setShowSuggestions] = useState(false);
 
     const convoCreateRequest = async () => {
@@ -35,7 +36,9 @@ const GetSuggestion = (props) => {
 
             const response = await axios.post('http://127.0.0.1:8000/test/suggestion', {
                 topic: sessionName,
-                user_id: userId
+                user_id: userId,
+                type: selected
+
             });
             console.log(response);
             setSuggestions(response.data.suggestions);
@@ -91,7 +94,6 @@ const GetSuggestion = (props) => {
                             <div className='overlay-cross-button-container'>
                                 <div className='overlay-cross-button' onClick={() => props.toggleOverlay()}>
                                     <FontAwesomeIcon icon={faClose} size='1x' />
-
                                 </div>
                             </div>
 
@@ -109,6 +111,13 @@ const GetSuggestion = (props) => {
                                 <button className='name-submit-button' onClick={() => convoCreateRequest()}>
                                     <FontAwesomeIcon icon={faPaperPlane} size='2x' />
                                 </button>
+                            </div>
+
+                            <div className='suggestion-title-buttons-2'>
+                                <div className={`suggestion-title-button ${selected == 'code' ? 'selected' : ''}`} onClick={() => setSelected('code')}> Code Problems</div>
+
+                                <div className={`suggestion-title-button ${selected == 'youtube' ? 'selected' : ''}`} onClick={() => setSelected('youtube')}> Youtube Videos</div>
+                                <div className={`suggestion-title-button ${selected == 'blog' ? 'selected' : ''}`} onClick={() => setSelected('blog')}> Blogs</div>
                             </div>
 
 
