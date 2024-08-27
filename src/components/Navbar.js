@@ -7,7 +7,7 @@ import { faPaperPlane, faBars, faPlus, faSquarePlus, faHouse,faRightFromBracket 
 
 
 const Navbar = () => {
-    const { logout } = useAuth();
+    const { logout,userId } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -24,6 +24,7 @@ const Navbar = () => {
                 <button onClick={()=>navigate('/allLectures')}>Lecture</button>
                 <button onClick={()=>navigate('/allquiz')}>Quizes</button>
                 <button onClick={()=>navigate('/allconvo')}>Conversation</button>
+                <button onClick={()=>navigate(`/profile/${userId}`)}>Profile</button>
                 <button className='logout-button' onClick={handleLogout}><FontAwesomeIcon icon={faRightFromBracket} size='2x'/></button>
             </div>
 
