@@ -12,6 +12,7 @@ import Suggestion from './pages/Suggestion';
 import AllLecture from './pages/AllLecture';
 import AllQuiz from './pages/AllQuiz';
 import AllConvo from './pages/AllConvo';
+import Profile from './pages/profile';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { token } = useAuth();
@@ -42,6 +43,7 @@ function App() {
             <Route path='/allLectures' element={<AllLecture/>}/>
             <Route path='/allquiz' element={<AllQuiz/>}/>
             <Route path='/allconvo' element={<AllConvo/>}/>
+            <Route path='/profile/:id' element={<Profile/>}/>
           </Routes>
         </Router>
       </AuthProvider>

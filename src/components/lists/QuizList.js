@@ -201,7 +201,7 @@ const QuizList = (props) => {
                                         <div className='tag-icon'><FontAwesomeIcon icon={faMarker} size='1x' /></div>
 
                                         <div className='suggestion-tag-text'>
-                                            {quiz.score}% correct
+                                            {((quiz.score/quiz.total_questions) * 100).toFixed(2)}% correct 
                                         </div>
 
                                     </div>
