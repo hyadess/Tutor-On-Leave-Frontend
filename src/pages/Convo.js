@@ -140,7 +140,7 @@ const Convo = () => {
           </pre>
         );
       }
-      return <div key={index} className={`chat-message ${sender}`}>{part}</div>;
+      return <div>{part}</div>;
     });
   };
 
@@ -179,7 +179,7 @@ const Convo = () => {
           {messages.map((message, index) => (
             message.type === 'text' ?
 
-              <div>{parseResponse(message.text, message.sender)}</div>
+              <div className={`chat-message ${message.sender}`}>{parseResponse(message.text, message.sender)}</div>
               : <img src={message.text} alt='image' className={`chat-message ${message.sender}`} />
           ))}
         </div>

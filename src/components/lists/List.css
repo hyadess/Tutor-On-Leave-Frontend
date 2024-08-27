@@ -57,6 +57,13 @@
     /* margin-left: 490px; */
 
 }
+.suggestion-title-buttons-2 {
+    display: flex;
+    /* margin-left: 490px; */
+    padding: 15px;
+
+}
+
 
 
 
@@ -81,11 +88,6 @@
     background-color: rgba(0, 128, 0, 0.61);
 
 }
-
-
-
-
-
 
 
 

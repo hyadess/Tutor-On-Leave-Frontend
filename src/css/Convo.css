@@ -67,12 +67,21 @@
 
 /* ------------------------------------------------------------------------------------- */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
   
 .chat-message {
-  padding: 1rem;
+  padding: 20px;
   margin-bottom: 0.5rem;
   border-radius: 5px;
+  object-fit: cover;
+  justify-content: center;
+  width: 90%;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  /*align text justify*/
+  text-align: justify;
+
   animation: message-in 0.3s ease-in-out; /* Animation for new messages */
 }
 
