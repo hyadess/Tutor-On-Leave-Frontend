@@ -17,6 +17,9 @@ import './../css/Toast.css';
 const Quiz = () => {
     const [isLeftContracted, setIsLeftContracted] = useState(false);
 
+
+    const { userId } = useAuth();
+
     const handleLeftToggle = () => {
         setIsLeftContracted(!isLeftContracted);
     };
@@ -143,10 +146,11 @@ const Quiz = () => {
     }, [isSubmitted])
 
     // compare selected options with right options if a question's all options are matched for both right and selected options, then it is correct
-    const checkAnswer = () => {
+    const checkAnswer = async() => {
+        console.log("answer Checking")
         let score = 0;
         if (questions == null) return
-        questions.forEach((question, i) => {
+        await questions.forEach((question, i) => {
             let isCorrect = true;
             question.Options.forEach((option, j) => {
                 if (rightOptions[i][j] != selectedOptions[i][j]) {
@@ -156,6 +160,7 @@ const Quiz = () => {
             if (isCorrect) {
                 score++;
             }
+            
         });
         setScore(score);
     }
@@ -207,10 +212,31 @@ const Quiz = () => {
 
     // render objects................................................................
 
-
-    const submit = () => {
+    const submit = async(e) => {
+        
         setIsSubmitted(true);
+        console.log(score)
         showToast('success', 'Submitted successfully');
+
+        // e.preventDefault();
+        try {
+
+            console.log(userId, id, score);
+           
+            const response = await axios.post('http://127.0.0.1:8000/quiz/attempt', { user_id:userId,quiz_id: id,score:score},
+            {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            });
+
+            console.log(userId, id, score);
+            
+           // navigate('/home');
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+          
     }
 
 
@@ -250,7 +276,6 @@ const Quiz = () => {
                 <div className={`chat-container ${isLeftContracted ? 'contracted' : ''}`}>
                     <div className='quiz-title'>
                         {title}
-
                     </div>
                     {
                         questions == null ? <></> :

@@ -174,6 +174,7 @@ const ConvoList = (props) => {
     
     const allPressed = () => {
         console.log(props.isAll)
+        navigate('/allconvo')
     }
 
     return (
@@ -183,14 +184,16 @@ const ConvoList = (props) => {
             <ToastContainer />
 
             <div className='suggestion-list-title-container'>
-                <div className='suggestion-list-title'>
-                    PAST CONVERSATIONS
+                <div className='flex'>
+                    <div className='suggestion-list-title'>
+                        PAST CONVERSATIONS
+                    </div>
+                    {
+                        props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
+                            See All
+                        </div> : <></>
+                    }
                 </div>
-                {
-                    props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
-                        See All
-                    </div> : <></>
-                }
 
                 <div className='suggestion-title-buttons'>
                     <div className={`suggestion-title-button ${selected == 'all' ? 'selected' : ''}`} onClick={() => setSelected('all')}> All</div>

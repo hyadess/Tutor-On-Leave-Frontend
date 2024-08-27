@@ -146,6 +146,7 @@ const QuizList = (props) => {
 
     const allPressed = () => {
         console.log(props.isAll)
+        navigate('/allquiz')
     }
 
     useEffect(() => {
@@ -161,14 +162,16 @@ const QuizList = (props) => {
             <ToastContainer />
 
             <div className='suggestion-list-title-container'>
-                <div className='suggestion-list-title'>
-                    PAST QUIZES
-                </div>
-                {
-                    props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
-                        See All
-                    </div> : <></>
-                }
+                <div className='flex'>
+                    <div className='suggestion-list-title'>
+                        PAST QUIZES
+                    </div>
+                    {
+                        props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
+                            See All
+                        </div> : <></>
+                    }
+                    </div>
 
                 <div className='suggestion-title-buttons'>
                     <div className={`suggestion-title-button ${selected == 'all' ? 'selected' : ''}`} onClick={() => setSelected('all')}> All</div>
@@ -198,7 +201,7 @@ const QuizList = (props) => {
                                         <div className='tag-icon'><FontAwesomeIcon icon={faMarker} size='1x' /></div>
 
                                         <div className='suggestion-tag-text'>
-                                            {quiz.score}% correct
+                                            {((quiz.score/quiz.total_questions) * 100).toFixed(2)}% correct 
                                         </div>
 
                                     </div>

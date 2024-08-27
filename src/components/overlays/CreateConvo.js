@@ -80,7 +80,7 @@ const CreateConvo = (props) => {
 
 
                 <div className='flex-div'>
-                    <div >
+                    <div className='w-[85%] h-[100%]'>
                         <textarea type="text" className="input-field"
                             placeholder="Name your chatbot..."
                             value={sessionName}
@@ -88,7 +88,7 @@ const CreateConvo = (props) => {
                         />
                     </div>
                     <button className='name-submit-button' onClick={() => convoCreateRequest()}>
-                        <FontAwesomeIcon icon={faPaperPlane} size='2x' />
+                        <FontAwesomeIcon icon={faPaperPlane}  />
                     </button>
                 </div>
 

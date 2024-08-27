@@ -36,9 +36,9 @@ const ToolList = () => {
 
 
                 <div className='tool-container' onClick={()=>setIsTutor(true)}>
-                    <div className='tool-image'>
+                    {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faChalkboard} size='1x' />
-                    </div>
+                    </div> */}
                     <div className='tool-text'>
                         <div className='tool-name'>
                             Tutor
@@ -49,9 +49,9 @@ const ToolList = () => {
 
 
                 <div className='tool-container' onClick={()=>setQuizVisible(true)}>
-                    <div className='tool-image'>
+                    {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faQuestion} size='1x' />
-                    </div>
+                    </div> */}
                     <div className='tool-text '>
                         <div className='tool-name red'>
                             Quiz Builder
@@ -66,10 +66,10 @@ const ToolList = () => {
 
 
                 <div className='tool-container' onClick={()=>setSuggestionsVisible(true)}>
-                    <div className='tool-image'>
+                    {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faSubscript} size='1x' />
 
-                    </div>
+                    </div> */}
                     <div className='tool-text '>
                         <div className='tool-name orange'>
                             Suggester
@@ -80,9 +80,9 @@ const ToolList = () => {
 
 
                 <div className='tool-container'>
-                    <div className='tool-image'>
+                    {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faTrademark} size='1x' />
-                    </div>
+                    </div> */}
                     <div className='tool-text'>
                         <div className='tool-name'>
                             Tutor Pro

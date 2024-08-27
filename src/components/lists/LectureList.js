@@ -99,6 +99,7 @@ const LectureList = (props) => {
 
     const allPressed = () => {
         console.log(props.isAll)
+        navigate('/allLectures')
     }
 
     const visit = (id) => {
@@ -116,14 +117,16 @@ const LectureList = (props) => {
             <ToastContainer />
 
             <div className='suggestion-list-title-container'>
-                <div className='suggestion-list-title'>
-                    PAST LECTURES
-                </div>
-                {
-                    props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
-                        See All
-                    </div> : <></>
-                }
+                <div className='flex'>
+                    <div className='suggestion-list-title'>
+                        PAST LECTURES
+                    </div>
+                    {
+                        props.isAll === false ? <div className='suggestion-see-all' onClick={() => allPressed()}>
+                            See All
+                        </div> : <></>
+                    }
+                    </div>
 
                 <div className='suggestion-title-buttons'>
                     <div className={`suggestion-title-button ${selected == 'all' ? 'selected' : ''}`} onClick={() => setSelected('all')}> All</div>

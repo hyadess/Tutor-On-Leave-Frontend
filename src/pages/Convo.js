@@ -155,7 +155,7 @@ const Convo = () => {
         </div>
         <div className='new-convo'>
           <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>New Conversation</h3>
-          <button className='menu-button add-button'><FontAwesomeIcon icon={faSquarePlus} size='3x' /></button>
+          <button className='menu-button add-button'><FontAwesomeIcon icon={faSquarePlus} size='2x' /></button>
         </div>
 
         <div className={`${isLeftContracted ? 'convo-list-contracted' : ''}`}>
@@ -166,7 +166,7 @@ const Convo = () => {
 
         <div className='new-convo last'>
           {/* <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>Back-to home</h3> */}
-          <button className='menu-button home-button'><FontAwesomeIcon icon={faHouse} size='2x' /></button>
+          <button className='menu-button home-button' onClick={()=>navigate('/home')}><FontAwesomeIcon icon={faHouse} style={{ fontSize: '26px' }} /></button>
         </div>
 
 
@@ -196,7 +196,7 @@ const Convo = () => {
           />
 
 
-          <button className='send-button' onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} size='3x' /></button>
+          <button className='send-button' onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} size='2x' /></button>
 
 
         </div>
