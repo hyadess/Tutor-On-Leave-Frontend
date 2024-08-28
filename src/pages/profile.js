@@ -26,11 +26,15 @@ const Profile = ()=>{
     const [convoCount, setConvoCount] = useState([])
     const [convoTime, setConvoTime] = useState([])
 
+    const [totalQuiz, setTotalQuiz] = useState(0);
+    const [totalConvo, setTOtalConvo] = useState(0);
+    const [totalSuggestion, setTotalSuggestion] = useState(0)
+
     const myProfile = async () => {                                     
         try {
 
             const response = await axios.get(`http://127.0.0.1:8000/profile/${userId}`);
-            console.log(typeof(response.data.quizzes[0].updated_at))
+            console.log(typeof(response.data))
             
             setUser(response.data.user)
             setQuizes(response.data.quizzes)
@@ -55,7 +59,7 @@ const Profile = ()=>{
         window.scrollTo(0, scrollPosition);
     }, [scrollPosition]);
 
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState('Quiz');
     const handleSelectChange = (e) => {
         e.preventDefault()
         setScrollPosition(window.scrollY);
@@ -81,6 +85,9 @@ const Profile = ()=>{
 
             let suggestionDate = suggestions.map(suggest => suggest.date) 
             setSuggestTime(suggestionDate)
+
+            const totalSuggestion = suggestions.reduce((acc, item) => acc + item.count, 0);
+            setTotalSuggestion(totalSuggestion)
               
         }
         if(convo){
@@ -90,6 +97,9 @@ const Profile = ()=>{
 
             let convoDate = convo.map(suggest => suggest.date) 
             setConvoTime(convoDate)
+
+            const totalConvo = convo.reduce((acc, item) => acc + item.count, 0);
+            setTOtalConvo(totalConvo)
               
         }
         if(quiz){
@@ -99,6 +109,9 @@ const Profile = ()=>{
 
             let convoDate = quiz.map(suggest => suggest.date) 
             setQuizTime(convoDate)
+
+            const totalQuiz = quiz.reduce((acc, item) => acc + item.count, 0);
+            setTotalQuiz(totalQuiz)
               
         }
 
@@ -107,11 +120,18 @@ const Profile = ()=>{
     const info = {
         options: {
           chart: {
-            id: "basic-bar"
+            id: "basic-bar",
+            toolbar: {
+              show: false,
+              tools: {
+                download: false // This removes the download button
+              }
+            },
           },
           xaxis: {
             type: 'datetime',
             categories: quizId,
+            
            
           },
           legend: {
@@ -148,7 +168,9 @@ const Profile = ()=>{
             },
             axisTicks: {
                 show: false
-            }
+            },
+            min : 0,
+            max : 100
           },
         },
         series: [
@@ -161,7 +183,13 @@ const Profile = ()=>{
     const quizInfo = {
         options: {
           chart: {
-            id: "basic-bar"
+            id: "basic-bar",
+            toolbar: {
+              show: false,
+              tools: {
+                download: false // This removes the download button
+              }
+            },
           },
           xaxis: {
             type: 'datetime',
@@ -173,7 +201,7 @@ const Profile = ()=>{
             horizontalAlign: 'left'
           },
           title: {
-            text: 'Quiz count per second',
+            text: 'Quiz Request per Day',
             align: 'left',
             offsetX: 14
           },
@@ -202,7 +230,8 @@ const Profile = ()=>{
             },
             axisTicks: {
                 show: false
-            }
+            },
+            min:0
           },
         },
         series: [
@@ -215,7 +244,13 @@ const Profile = ()=>{
     const suggestInfo = {
         options: {
           chart: {
-            id: "basic-bar"
+            id: "basic-bar",
+            toolbar: {
+              show: false,
+              tools: {
+                download: false // This removes the download button
+              }
+            },
           },
           xaxis: {
             type: 'datetime',
@@ -227,7 +262,7 @@ const Profile = ()=>{
             horizontalAlign: 'left'
           },
           title: {
-            text: 'Suggestion count per day',
+            text: 'Suggestion request per day',
             align: 'left',
             offsetX: 14
           },
@@ -256,7 +291,8 @@ const Profile = ()=>{
             },
             axisTicks: {
                 show: false
-            }
+            },
+            min: 0
           },
         },
         series: [
@@ -269,7 +305,13 @@ const Profile = ()=>{
     const convoInfo = {
         options: {
           chart: {
-            id: "basic-bar"
+            id: "basic-bar",
+            toolbar: {
+              show: false,
+              tools: {
+                download: false // This removes the download button
+              }
+            },
           },
           xaxis: {
             type: 'datetime',
@@ -281,10 +323,11 @@ const Profile = ()=>{
             horizontalAlign: 'left'
           },
           title: {
-            text: 'Convo count per second',
+            text: 'Convo request per second',
             align: 'left',
             offsetX: 14
           },
+          
           fill: {
             type: 'gradient',
             gradient: {
@@ -310,7 +353,8 @@ const Profile = ()=>{
             },
             axisTicks: {
                 show: false
-            }
+            },
+            min : 0
           },
         },
         series: [
@@ -321,11 +365,49 @@ const Profile = ()=>{
             ]
     };
 
+    const horizontalBar = {
+      series: [
+        {
+          name: 'Total',
+          data: [totalQuiz, totalSuggestion, totalConvo]
+        }
+      ],
+      options: {
+        chart: {
+          type: 'bar',
+          height: 350,
+          toolbar: {
+            show: false,
+            tools: {
+              download: false // This removes the download button
+            }
+          },
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true
+          }
+        },
+        toolbar: {
+          show: false,
+          tools: {
+            download: false // This removes the download button
+          }
+        },
+        dataLabels: {
+          enabled: true
+        },
+        xaxis: {
+          categories: ["Quiz",   "Suggestion", "Conversation"   ]
+        }
+      }
+    }
+
     const circleStyle = {
         width: '200px',
         height: '200px',
         borderRadius: '50%',
-        backgroundColor: 'blue',
+        backgroundColor: 'gray',
     };
 
     
@@ -344,55 +426,68 @@ const Profile = ()=>{
                             <p>{user.username}</p>
                             <p>{user.email}</p>
                         </div>
-                    </div>
 
-                    <div className="m-6 w-[100%] grid grid-cols-1 md:grid-cols-2">
-
-                        <div className="w-[90%] ">
-
+                        <div>
                             <Chart
-                                options={info.options}
-                                series={info.series}
-                                type="area"
-                                width="100%"
+                                options={horizontalBar.options}
+                                series={horizontalBar.series}
+                                type="bar"
                             />
                         </div>
+                    </div>
 
-                        <div className="w-[90%] ">
-                            <select value={selectedOption} onChange={handleSelectChange}>
-                                <option value="" disabled>Select an option</option>
-                                <option value="Quiz">Quiz</option>
-                                <option value="Suggestion">Suggestion</option>
-                                <option value="Conversation">Conversation</option>
-                            </select>
-                        
-                            
-                            {selectedOption=="Quiz" && 
+                    
+                    <div className="flex flex-wrap w-[100%] justify-center ">
+
+                        <div className="m-6 w-[100%] md:w-[80%] grid grid-cols-1 md:grid-cols-2 justify-items-center">
+
+                            <div className="md:w-[80%] w-[100%]">
+
                                 <Chart
-                                    options={quizInfo.options}
-                                    series={quizInfo.series}
+                                    options={info.options}
+                                    series={info.series}
                                     type="area"
                                     width="100%"
                                 />
-                            }
-                            {selectedOption=="Suggestion" && 
-                                <Chart
-                                    options={suggestInfo.options}
-                                    series={suggestInfo.series}
-                                    type="area"
-                                    width="100%"
-                                />
-                            }
-                            {selectedOption=="Conversation" && 
-                                <Chart
-                                    options={convoInfo.options}
-                                    series={convoInfo.series}
-                                    type="area"
-                                    width="100%"
-                                />
-                            }
+                            </div>
+
+                            <div className="md:w-[80%] w-[100%] ">
+                                <select value={selectedOption} onChange={handleSelectChange}>
+                                    <option value="" disabled>Select an option</option>
+                                    <option value="Quiz">Quiz</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                    <option value="Conversation">Conversation</option>
+                                </select>
+
+                                
+                                {selectedOption=="Quiz" && 
+                                    <Chart
+                                        options={quizInfo.options}
+                                        series={quizInfo.series}
+                                        type="area"
+                                        width="100%"
+                                    />
+                                }
+                                {selectedOption=="Suggestion" && 
+                                    <Chart
+                                        options={suggestInfo.options}
+                                        series={suggestInfo.series}
+                                        type="area"
+                                        width="100%"
+                                    />
+                                }
+                                {selectedOption=="Conversation" && 
+                                    <Chart
+                                        options={convoInfo.options}
+                                        series={convoInfo.series}
+                                        type="area"
+                                        width="100%"
+                                    />
+                                }
+                            </div>
+
                         </div>
-                        
+
                     </div>
 
                 </div>

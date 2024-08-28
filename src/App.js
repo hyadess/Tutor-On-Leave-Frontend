@@ -13,6 +13,7 @@ import AllLecture from './pages/AllLecture';
 import AllQuiz from './pages/AllQuiz';
 import AllConvo from './pages/AllConvo';
 import Profile from './pages/profile';
+import LandingPage from './pages/LandingPage';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { token } = useAuth();
@@ -35,7 +36,7 @@ function App() {
             <Route path="/login" element={<Login/>} />
             <Route path="/signup" element={<Signup/>} />
             <Route path="/home" element={<Home/>} />
-            <Route path="/" element={<Navigate replace to={"/login"} />} />
+            <Route path="/" element={<LandingPage/>}/>
             <Route path="/conversation/:id" element={<Convo/>} />
             <Route path="/lecture/:id" element={<Lecture/>} />
             <Route path='/quiz/:id' element={<Quiz/>}/>

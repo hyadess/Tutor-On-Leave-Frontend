@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     
-      <div class="login-container">
+    <div class="login-container">
       <h2>LOGIN</h2>
       <form onSubmit={handleSubmit}>
         <label for="email">Username</label>
@@ -42,6 +42,7 @@ const Login = () => {
           <label for="remember-me">Remember Me</label>
         </div>
         <button type="submit">LOGIN</button>
+        <p>Dont have an account?<button className="hover:underline hover:font-semibold" onClick={()=>navigate('/signup')}>Sign Up</button></p>
       </form>
     </div>
 
