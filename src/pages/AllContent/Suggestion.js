@@ -1,11 +1,12 @@
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import { useAuth } from "../context/AuthContext";
+import Navbar from "../../components/Navbar";
+import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
-import SuggestionList from "../components/lists/SuggestionList";
+import SuggestionList from "../../components/lists/SuggestionList";
+import "../../css/All.css";
 
 
-const Suggestion = ()=>{
+const Suggestion = () => {
 
     const { userId } = useAuth();
     const [suggestions, setSuggestions] = useState([]);
@@ -24,10 +25,14 @@ const Suggestion = ()=>{
         mySuggestions();
     }, []);
 
-    return(
+    return (
         <>
             <Navbar></Navbar>
-            <SuggestionList isAll={true} suggestions={suggestions} />
+            <div className="all-container">
+                <SuggestionList isAll={true} suggestions={suggestions} />
+
+            </div>
+
         </>
     )
 }

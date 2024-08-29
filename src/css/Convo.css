@@ -1,8 +1,8 @@
-.container {
+.container-diff {
   display: flex;
   height: 100vh;
 }
-  
+
 /* -------------------------------------------------------------- */
 
 .left {
@@ -10,7 +10,8 @@
   width: 20%;
   background-color: #f0f0f0;
   padding: 1rem;
-  transition: width 0.2s ease-in; /* Animation for width change */
+  transition: width 0.2s ease-in;
+  /* Animation for width change */
 }
 
 .left.contracted {
@@ -18,37 +19,41 @@
 }
 
 
-  /* -------------------------------------------------------------- */
+/* -------------------------------------------------------------- */
 .middle {
   width: 80%;
   background-color: #fff;
   padding: 1rem;
-  height: 100%;
 }
+
 .middle.contracted {
   width: 95%;
-  
 }
 
-  /* ----------------------------------------------------------------- */
+/* ----------------------------------------------------------------- */
 
 .chat-container {
-    /* margin-top: 20px; */
-     /* Adjust height based on other elements */
-    overflow-y: scroll; /* Enable scrolling for chat messages */
-    /* padding-left: 10%;
-    padding-right: 10%; */
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
+  margin-top: 40px;
+  height: 700px;
+  /* Adjust height based on other elements */
+  overflow-y: scroll;
+  /* Enable scrolling for chat messages */
+  padding-left: 300px;
+  padding-right: 300px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 .chat-container.contracted {
-    padding-left: 20%;
-    padding-right: 20%;
+  padding-left: 450px;
+  padding-right: 450px;
 }
-    /* For the entire scrollbar */
+
+/* For the entire scrollbar */
 .chat-container::-webkit-scrollbar {
-  width: 16px; /* Width of the scrollbar */
-  height: 2px; /* Height of the scrollbar */
+  width: 16px;
+  /* Width of the scrollbar */
+  height: 2px;
+  /* Height of the scrollbar */
 }
 
 /* Track (the background of the scrollbar) */
@@ -67,36 +72,29 @@
 
 /* ------------------------------------------------------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-  
+
 .chat-message {
-  padding: 20px;
+  padding: 1rem;
   margin-bottom: 0.5rem;
   border-radius: 5px;
-  object-fit: cover;
-  justify-content: center;
-  width: 90%;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.5;
-  /*align text justify*/
-  text-align: justify;
-
-  animation: message-in 0.3s ease-in-out; /* Animation for new messages */
+  animation: message-in 0.3s ease-in-out;
+  /* Animation for new messages */
 }
 
 .chat-message.user {
   background-color: #90d093d9;
   text-align: right;
-  
-  border-radius: 15px;
+
+  border-radius: 30px;
   color: white;
-  word-wrap: break-word; /* Ensure long words break */
+  word-wrap: break-word;
+  /* Ensure long words break */
   white-space: normal;
-  width:fit-content;
-  
-  
-  
+  width: fit-content;
+
+
+
 }
 
 .chat-message.system {
@@ -108,6 +106,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -118,33 +117,36 @@
 
 .input-container {
   display: flex;
-  /* margin-left: 300px;
-  margin-right: 300px; */
-  align-items: flex-end;
-  justify-content: center;
-  margin: 20px;
-  
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
 }
 
 .input-container.contracted {
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 450px;
+  margin-right: 450px;
 }
 
-.chat-input{
+.chat-input {
   background-color: #f0f0f0;
-  width:70%;
+  width: 90%;
   border: none;
-  border-radius: 25px;
-  word-wrap: break-word; /* Ensure long words break */
+  border-radius: 40px;
+  word-wrap: break-word;
+  /* Ensure long words break */
   white-space: normal;
   height: auto;
-  resize: none; /* Disable textarea resizing */
-  overflow: hidden; /* Hide any content that exceeds height */
-  box-sizing: border-box; /* Include padding in the total width/height */
-  min-height: 50px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  padding: 10px;
+  resize: none;
+  /* Disable textarea resizing */
+  overflow: hidden;
+  /* Hide any content that exceeds height */
+  box-sizing: border-box;
+  /* Include padding in the total width/height */
+  min-height: 80px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 20px;
   font-size: medium;
 }
 
@@ -156,18 +158,22 @@
 
 /* ------------------------------------------------------------------ */
 .send-button {
-  background-color: transparent; /* Default background color */
+  background-color: transparent;
+  /* Default background color */
   border: none;
   margin: 5px;
-  align-items: center; /* If this is meant for flexbox, ensure parent has display: flex; */
+  align-items: center;
+  /* If this is meant for flexbox, ensure parent has display: flex; */
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out; /* Animation for color change */
+  transition: background-color 0.3s ease-in-out;
+  /* Animation for color change */
   width: 7%;
   height: 60px;
   border-radius: 50%;
 }
+
 .send-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.4);
   color: chocolate;
   transition: 0.3s ease-in-out;
 }
@@ -175,10 +181,12 @@
 /* ------------------------------------------------------------------------------------- */
 
 .menu-button {
-  background-color: transparent; /* Default background color */
+  background-color: transparent;
+  /* Default background color */
 }
+
 .menu-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.4);
   color: chocolate;
   transition: 0.3s ease-in-out;
 
@@ -187,40 +195,39 @@
 
 /* ------------------------------------------------------------------------------------- */
 
-.new-convo{
+.new-convo {
   display: flex;
-  align-items: center;
 }
 
 .new-convo.contracted {
   display: none;
 }
 
-.convo-list-contracted{
+.convo-list-contracted {
   display: none;
 }
 
-.new-convo-text{
-  /* width: 50%; */
+.new-convo-text {
+  width: 50%;
   border: none;
   padding: 20px;
   font-size: 20px;
   opacity: 0.7;
-  font-weight: bold;
 }
+
 .new-convo-text.contracted {
   display: none;
 }
 
-.add-button{
-  /* padding-top:30px */
+.add-button {
+  padding-top: 30px
 }
 
-.home-button{
-  padding-top:26px;
+.home-button {
+  padding-top: 26px
 }
 
-.last{
+.last {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -268,9 +275,9 @@ code {
   pointer-events: auto;
   /* Allow interaction when visible */
 }
-  
 
-.overlay-content-2{
+
+.overlay-content-2 {
   background-color: #ffffff;
   margin-left: 300px;
   margin-top: 30px;
@@ -306,4 +313,3 @@ code {
   transform: scale(1.2);
   transition: 0.3s ease-in-out;
 }
-  

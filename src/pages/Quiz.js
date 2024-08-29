@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faBars, faPlus, faSquarePlus, faHouse, faDeafness, faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 import '../css/Quiz.css';
 import axios from 'axios';
+import QuizLineList from '../components/lineLists/QuizLineList';
 
 //for toast
 
@@ -146,7 +147,7 @@ const Quiz = () => {
     }, [isSubmitted])
 
     // compare selected options with right options if a question's all options are matched for both right and selected options, then it is correct
-    const checkAnswer = async() => {
+    const checkAnswer = async () => {
         console.log("answer Checking")
         let score = 0;
         if (questions == null) return
@@ -160,7 +161,7 @@ const Quiz = () => {
             if (isCorrect) {
                 score++;
             }
-            
+
         });
         setScore(score);
     }
@@ -204,7 +205,7 @@ const Quiz = () => {
 
     useEffect(() => {
         setQuiz();
-    }, [])
+    }, [id])
 
 
 
@@ -212,8 +213,8 @@ const Quiz = () => {
 
     // render objects................................................................
 
-    const submit = async(e) => {
-        
+    const submit = async (e) => {
+
         setIsSubmitted(true);
         console.log(score)
         showToast('success', 'Submitted successfully');
@@ -222,21 +223,21 @@ const Quiz = () => {
         try {
 
             console.log(userId, id, score);
-           
-            const response = await axios.post('http://127.0.0.1:8000/quiz/attempt', { user_id:userId,quiz_id: id,score:score},
-            {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            });
+
+            const response = await axios.post('http://127.0.0.1:8000/quiz/attempt', { user_id: userId, quiz_id: id, score: score },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
 
             console.log(userId, id, score);
-            
-           // navigate('/home');
+
+            // navigate('/home');
         } catch (error) {
             console.error('Login failed:', error);
         }
-          
+
     }
 
 
@@ -264,12 +265,26 @@ const Quiz = () => {
 
 
     return (
-        <div className='container'>
+        <div className='container-diff'>
 
             <ToastContainer />
             <div className={`left ${isLeftContracted ? 'contracted' : ''}`}>
                 <div>
                     <button className='menu-button' onClick={handleLeftToggle}><FontAwesomeIcon icon={faBars} size='2x' /></button>
+                </div>
+                <div className='new-convo'>
+                    <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>New Quiz</h3>
+                    <button className='menu-button add-button'><FontAwesomeIcon icon={faSquarePlus} size='2x' /></button>
+                </div>
+
+                <div className={`${isLeftContracted ? 'convo-list-contracted' : ''}`}>
+                    <QuizLineList current={id} />
+                </div>
+
+
+                <div className='new-convo last'>
+                    {/* <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>Back-to home</h3> */}
+                    <button className='menu-button home-button' onClick={() => navigate('/home')}><FontAwesomeIcon icon={faHouse} style={{ fontSize: '26px' }} /></button>
                 </div>
             </div>
             <div className={`middle ${isLeftContracted ? 'contracted' : ''}`}>

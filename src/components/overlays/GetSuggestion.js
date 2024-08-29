@@ -76,7 +76,7 @@ const GetSuggestion = (props) => {
     return (
         loading ? <Loader loading={loading} /> :
 
-            <div className={`overlay ${props.isOverlayVisible ? 'visible' : ''}`} id="overlay">
+            <div className={`overlay ${props.isOverlayVisible ? 'visible' : ''}`}>
                 {
                     showSuggestions ?
                         <div className='overlay-content-2'>
@@ -90,27 +90,30 @@ const GetSuggestion = (props) => {
                         </div>
 
                         :
-                        <div className='overlay-content'>
+                        <div className='overlay-content-suggestion'>
 
                             <div className='overlay-cross-button-container'>
                                 <div className='overlay-cross-button' onClick={() => props.toggleOverlay()}>
-                                    <FontAwesomeIcon icon={faClose} size='1x' />
+                                    <FontAwesomeIcon icon={faClose}/>
                                 </div>
                             </div>
 
                             {/* <div className='session-text'>ENTER SESSION NAME</div> */}
 
 
-                            <div className='flex-div pb-5'>
-                                <div className='w-[85%] h-[100%]'>
-                                    <textarea type="text" className="input-field"
-                                        placeholder="Topic for suggestion?..."
-                                        value={sessionName}
-                                        onChange={(e) => setSessionName(e.target.value)}
-                                    />
+                            <div className='flex-div'>
+
+                                <div><textarea type="text" className="input-field"
+                                    placeholder="Topic for suggestion?..."
+                                    value={sessionName}
+                                    onChange={(e) => setSessionName(e.target.value)}
+                                />
                                 </div>
-                                <button className='name-submit-button' onClick={() => convoCreateRequest()}>
-                                    <FontAwesomeIcon icon={faPaperPlane} size='1x' />
+
+
+
+                                <button className='name-submit-buttond' onClick={() => convoCreateRequest()}>
+                                    <FontAwesomeIcon icon={faPaperPlane} size='xs'/>
                                 </button>
                             </div>
 

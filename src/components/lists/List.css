@@ -8,9 +8,7 @@
 
 .suggestion-list-title-container {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    flex-wrap: wrap;
+    padding: 20px;
 
 }
 
@@ -28,12 +26,12 @@
 
 
 .suggestion-see-all {
-    font-size: small;
+    font-size: medium;
     padding: 5px;
     padding-left: 12px;
     padding-right: 12px;
 
-    margin: 5px;
+    margin-left: 5px;
     border-radius: 20px;
 
     background-color: #b6b0b0fd;
@@ -54,16 +52,9 @@
 
 .suggestion-title-buttons {
     display: flex;
-    /* margin-left: 490px; */
+    margin-left: 490px;
 
 }
-.suggestion-title-buttons-2 {
-    display: flex;
-    /* margin-left: 490px; */
-    padding: 15px;
-
-}
-
 
 
 
@@ -93,6 +84,11 @@
 
 
 
+
+
+
+
+
 /* -------------------------------------------------------------------------------------- */
 
 
@@ -101,18 +97,19 @@
 .suggestion-list-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: center;
 
 }
 
 .suggestion-container {
-    width: 24%;
-    min-width: 250px;
+    width: 23%;
     border: 1px solid #0f0f0f2c;
     margin: 3px;
     margin-bottom: 15px;
     border-radius: 30px;
     transition: 0.3s ease-in-out;
+
+
 }
 
 .suggestion-container:hover {
@@ -199,7 +196,6 @@
 
 .suggestion-lower-part {
     display: flex;
-    align-items: center;
     margin: 10px;
 }
 

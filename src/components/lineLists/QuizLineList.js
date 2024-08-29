@@ -14,7 +14,7 @@ import './../../css/Toast.css';
 
 //------------------------
 
-const ConvoLineList = ({ current }) => {
+const QuizLineList = ({ current }) => {
 
     // const convos = [
     //     {
@@ -35,19 +35,19 @@ const ConvoLineList = ({ current }) => {
 
     // ];
 
-    const [convos, setConvos] = useState([]);
+    const [quizes, setQuizes] = useState([]);
     const { userId } = useAuth();
     //navigate
     const navigate = useNavigate();
 
-    const myConvos = async () => {
+    const myQuizes = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/conversation/${userId}/get_normal`);
+            const response = await axios.get(`http://127.0.0.1:8000/quiz/${userId}/get_all`);
             console.log(response);
-            setConvos(response.data);
+            setQuizes(response.data);
         }
         catch (error) {
-            console.error('Error fetching convos:', error.response ? error.response.data : error.message);
+            console.error('Error fetching lectures:', error.response ? error.response.data : error.message);
         }
     }
     const showToast = (type, text) => {
@@ -69,28 +69,14 @@ const ConvoLineList = ({ current }) => {
 
     const openConvo = (index) => {
         //navigate to the convo
-        navigate(`/conversation/${index}`);
+        navigate(`/quiz/${index}`);
     }
-    const deleteConvo = async (i) => {
-        console.log(`${i} th convo is deleted`)
-        const response = await axios.delete(`http://127.0.0.1:8000/conversation/${i}/delete`);
-        console.log(response.data)
-        // now we are getting the updated suggestion from the data, delete the suggestion where the id matches
 
-        const updatedConvos = convos.filter(convo => convo.id !== i);
-        setConvos(updatedConvos);
-        const message = response.data.message;
-        if (message === "Conversation deleted successfully") {
-            showToast('success', 'conversation is deleted');
-        }
-
-
-    }
 
 
 
     useEffect(() => {
-        myConvos();
+        myQuizes();
     }, []);
 
     return (
@@ -98,19 +84,19 @@ const ConvoLineList = ({ current }) => {
             <ToastContainer />
             <div className='convo-list-container'>
                 {
-                    convos.length === 0 ? <div></div> :
-                        convos.map((convo, index) => (
-                            index > 5 || convo.id == current ? <div></div> :
+                    quizes.length === 0 ? <div></div> :
+                        quizes.map((quiz, index) => (
+                            index > 5 || quiz.id == current ? <div></div> :
                                 <div className='convo-list-convo'>
                                     <div className='convo-list-text'>
-                                        {convo.name}
+                                        {quiz.topic}
                                     </div>
 
                                     <div className='convo-list-button-container'>
-                                        <div className='convo-list-button' onClick={() => deleteConvo(convo.id)}>
+                                        {/* <div className='convo-list-button' onClick={() => deleteConvo(convo.id)}>
                                             <FontAwesomeIcon icon={faFire} size='1x' />
-                                        </div>
-                                        <div className='convo-list-button' onClick={() => openConvo(convo.id)}>
+                                        </div> */}
+                                        <div className='convo-list-button' onClick={() => openConvo(quiz.id)}>
                                             <FontAwesomeIcon icon={faEdit} size='1x' />
                                         </div>
 
@@ -143,4 +129,4 @@ const ConvoLineList = ({ current }) => {
 
 };
 
-export default ConvoLineList;
+export default QuizLineList;

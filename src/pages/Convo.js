@@ -128,7 +128,7 @@ const Convo = () => {
 
   useEffect(() => {
     loadConversation();
-  }, []);
+  }, [id]);
 
   const parseResponse = (text, sender) => {
     const parts = text.split(/(```[\s\S]*?```)/);
@@ -148,7 +148,7 @@ const Convo = () => {
 
 
   return (
-    <div className="container">
+    <div className="container-diff">
       <div className={`left ${isLeftContracted ? 'contracted' : ''}`}>
         <div>
           <button className='menu-button' onClick={handleLeftToggle}><FontAwesomeIcon icon={faBars} size='2x' /></button>
@@ -159,14 +159,14 @@ const Convo = () => {
         </div>
 
         <div className={`${isLeftContracted ? 'convo-list-contracted' : ''}`}>
-          <ConvoLineList />
+          <ConvoLineList current={id} />
         </div>
 
 
 
         <div className='new-convo last'>
           {/* <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>Back-to home</h3> */}
-          <button className='menu-button home-button' onClick={()=>navigate('/home')}><FontAwesomeIcon icon={faHouse} style={{ fontSize: '26px' }} /></button>
+          <button className='menu-button home-button' onClick={() => navigate('/home')}><FontAwesomeIcon icon={faHouse} style={{ fontSize: '26px' }} /></button>
         </div>
 
 
