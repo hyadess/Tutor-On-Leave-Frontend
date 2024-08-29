@@ -27,7 +27,7 @@ const Suggestion = () => {
 
     return (
         <>
-            <Navbar></Navbar>
+            
             <div className="all-container">
                 <SuggestionList isAll={true} suggestions={suggestions} />
 

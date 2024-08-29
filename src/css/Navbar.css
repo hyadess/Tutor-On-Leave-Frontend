@@ -4,11 +4,58 @@
     align-items: center;
 }
 
-.navbar-last{
-    /* position:absolute;
-    right: 0%;
-    padding: 10px */
+.navbar-button-container{
+    display: flex;
+    padding-left: 100px;
+    width: 80%;
 }
+
+.cursor{
+    cursor: pointer;
+}
+
+.navbar-button{
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+.navbar-button.selected{
+    background-color: rgb(26, 154, 20);
+    color: white;
+}
+
+.navbar-user-container{
+    display: flex;
+    width: 20%;
+}
+
+.navbar-last{
+    position:absolute;
+    right: 0%;
+    margin: 0px;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.navbar-last:hover{
+    color: rgb(26, 154, 20);
+    
+}
+
+.button-text{
+    font-weight: bold;
+    padding: 10px;
+
+}
+
+
 
 .logout-button{
     background-color: transparent;

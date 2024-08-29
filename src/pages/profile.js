@@ -501,7 +501,7 @@ const Profile = ()=>{
     return(
         <>
     
-            <Navbar/>
+            
 
             <div className="flex justify-center">
 

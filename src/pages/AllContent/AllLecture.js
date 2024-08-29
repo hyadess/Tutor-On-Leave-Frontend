@@ -27,7 +27,7 @@ const AllLecture = () => {
 
     return (
         <>
-            <Navbar></Navbar>
+            
             <div className="all-container">
                 <LectureList isAll={true} lectures={lectures} />
             </div>

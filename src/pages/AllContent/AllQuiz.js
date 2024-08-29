@@ -28,7 +28,7 @@ const AllQuiz = () => {
 
     return (
         <>
-            <Navbar></Navbar>
+            
             <div className="all-container">
                 <QuizList isAll={false} quizes={quizes} />
             </div>

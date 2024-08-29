@@ -89,7 +89,7 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar />
+            
             <div className='home-center'>
                 <div className='home-starter'>
                     <div className='home-starter-text'>

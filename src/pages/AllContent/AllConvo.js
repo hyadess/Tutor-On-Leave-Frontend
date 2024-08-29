@@ -31,7 +31,7 @@ const AllConvo = () => {
     return (
         <>
 
-            <Navbar></Navbar>
+            
             <div className="all-container">
                 <ConvoList isAll={false} convos={convos} />
             </div>
