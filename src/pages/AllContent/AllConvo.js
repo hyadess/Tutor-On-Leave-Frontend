@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar"
-import { useAuth } from "../context/AuthContext";
+import Navbar from "../../components/Navbar"
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
-import ConvoList from "../components/lists/ConvoList";
+import ConvoList from "../../components/lists/ConvoList";
+import "../../css/All.css"
 
-
-const AllConvo = ()=>{
+const AllConvo = () => {
 
 
     const { userId } = useAuth();
@@ -21,18 +21,21 @@ const AllConvo = ()=>{
         }
     }
 
-            
+
 
 
     useEffect(() => {
         myConvos();
     }, []);
 
-    return(
+    return (
         <>
-        
+
             <Navbar></Navbar>
-            <ConvoList isAll={false} convos={convos} />
+            <div className="all-container">
+                <ConvoList isAll={false} convos={convos} />
+            </div>
+
 
         </>
     )

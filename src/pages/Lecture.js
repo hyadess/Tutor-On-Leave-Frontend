@@ -262,7 +262,7 @@ const Lecture = () => {
 
 
     return (
-        <div className="container">
+        <div className="container-diff">
             <div className={`left ${isLeftContracted ? 'contracted' : ''}`}>
                 <div>
                     <button className='menu-button' onClick={handleLeftToggle}><FontAwesomeIcon icon={faBars} size='2x' /></button>

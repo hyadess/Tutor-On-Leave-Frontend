@@ -85,8 +85,8 @@ const CreateLecture = (props) => {
                             onChange={(e) => setSessionName(e.target.value)}
                         />
                     </div>
-                    <button className='name-submit-button' onClick={() => convoCreateRequest()}>
-                        <FontAwesomeIcon icon={faPaperPlane} size='2x' />
+                    <button className='name-submit-buttond' onClick={() => convoCreateRequest()}>
+                        <FontAwesomeIcon icon={faPaperPlane}/>
                     </button>
                 </div>
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar"
-import LectureList from "../components/lists/LectureList";
-import { useAuth } from "../context/AuthContext";
+import Navbar from "../../components/Navbar"
+import LectureList from "../../components/lists/LectureList";
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
+import "../../css/All.css"
 
-
-const AllLecture = ()=>{
+const AllLecture = () => {
 
 
     const { userId } = useAuth();
@@ -22,13 +22,15 @@ const AllLecture = ()=>{
     }
     useEffect(() => {
         myLectures();
-        
+
     }, []);
 
-    return(
+    return (
         <>
             <Navbar></Navbar>
-            <LectureList isAll={true} lectures={lectures} />
+            <div className="all-container">
+                <LectureList isAll={true} lectures={lectures} />
+            </div>
         </>
     )
 }

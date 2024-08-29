@@ -8,10 +8,10 @@ import Convo from './pages/Convo';
 import Quiz from './pages/Quiz'
 import Lecture from './pages/Lecture';
 import AuthProvider, { useAuth } from './context/AuthContext';
-import Suggestion from './pages/Suggestion';
-import AllLecture from './pages/AllLecture';
-import AllQuiz from './pages/AllQuiz';
-import AllConvo from './pages/AllConvo';
+import Suggestion from './pages/AllContent/Suggestion';
+import AllLecture from './pages/AllContent/AllLecture';
+import AllQuiz from './pages/AllContent/AllQuiz';
+import AllConvo from './pages/AllContent/AllConvo';
 import Profile from './pages/profile';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
