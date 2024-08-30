@@ -5,11 +5,12 @@ import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import QuizList from "../../components/lists/QuizList";
 import "../../css/All.css"
-
+import { useNavigate } from 'react-router-dom';
 const AllQuiz = () => {
 
 
     const { userId } = useAuth();
+    const navigate = useNavigate();
     const [quizes, setQuizes] = useState([]);
     const myQuizes = async () => {
         try {
@@ -25,10 +26,15 @@ const AllQuiz = () => {
         myQuizes();
 
     }, []);
+    useEffect(() => {
+        if (!userId) {
+            navigate('/');
+        }
+    }, []);
 
     return (
         <>
-            <Navbar></Navbar>
+            <Navbar />
             <div className="all-container">
                 <QuizList isAll={false} quizes={quizes} />
             </div>

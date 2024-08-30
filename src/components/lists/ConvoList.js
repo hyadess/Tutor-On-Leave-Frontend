@@ -7,10 +7,11 @@ import './List.css';
 import axios from 'axios';
 
 //for toast
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './../../css/Toast.css';
+
+
 
 //------------------------
 
@@ -99,21 +100,6 @@ const ConvoList = (props) => {
         setConvos(props.convos);
     }, [props.convos]);
 
-    const showToast = (type, text) => {
-        toast(text, {
-            type: { type }, // or 'success', 'error', 'warning', 'info'
-            position: 'top-right', // or 'top-left', 'bottom-left', 'bottom-right', 'top-center', 'bottom-center'
-            autoClose: 2000, // milliseconds
-            hideProgressBar: false,
-            className: 'toast-container',
-            bodyClassName: "toast-body",
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-
-        });
-    };
 
     const makeImportant = async (i) => {
 
@@ -123,16 +109,16 @@ const ConvoList = (props) => {
         // now we are getting the updated suggestion from the data, update the suggestions where the id matches 
         const updatedConvo = response.data;
 
-        if( updatedConvo === null){
+        if (updatedConvo === null) {
             return;
         }
-        else{
-            if( updatedConvo.isHighlighted == true){
-                showToast('success', 'Conversation is highlighted');
-            }
-            else{
-                showToast('success', 'Conversation is unhighlighted');
-            }
+        else {
+            // if (updatedConvo.isHighlighted == true) {
+            //     showtoast('success', 'Conversation is highlighted');
+            // }
+            // else {
+            //     showtoast('success', 'Conversation is unhighlighted');
+            // }
         }
 
         const updatedConvos = convos.map(convo => {
@@ -147,7 +133,7 @@ const ConvoList = (props) => {
 
 
 
-    const visit =  (i) => {
+    const visit = (i) => {
 
         // navigate to conversation page
         navigate(`/conversation/${i}`);
@@ -163,15 +149,15 @@ const ConvoList = (props) => {
         const updatedConvos = convos.filter(convo => convo.id !== i);
         setConvos(updatedConvos);
         const message = response.data.message;
-        if( message === "Conversation deleted successfully"){
-            showToast('success', 'conversation is deleted');
-        }
+        // if (message === "Conversation deleted successfully") {
+        //     showtoast('success', 'conversation is deleted');
+        // }
 
 
     }
 
 
-    
+
     const allPressed = () => {
         console.log(props.isAll)
         navigate('/allconvo')
@@ -181,7 +167,7 @@ const ConvoList = (props) => {
 
 
         <div className='whole-thing-container'>
-            <ToastContainer />
+            <ToastContainer/>
 
             <div className='suggestion-list-title-container'>
                 <div className='flex'>
@@ -199,7 +185,7 @@ const ConvoList = (props) => {
                     <div className={`suggestion-title-button ${selected == 'all' ? 'selected' : ''}`} onClick={() => setSelected('all')}> All</div>
 
                     <div className={`suggestion-title-button ${selected == 'highlighted' ? 'selected' : ''}`} onClick={() => setSelected('highlighted')}> starred</div>
-                   
+
                 </div>
 
             </div>
@@ -208,26 +194,31 @@ const ConvoList = (props) => {
                 {
                     convos &&
                     convos.map((convo, index) => (
-                        (selected === 'all' || (selected === 'highlighted' && convo.isHighlighted == true)) 
-                        && (props.isAll === true || (props.isAll === false && index < 7)) ?
+                        (selected === 'all' || (selected === 'highlighted' && convo.isHighlighted == true))
+                            && (props.isAll === true || (props.isAll === false && index < 7)) ?
                             <div className='suggestion-container'>
                                 <div className='suggestion-text-container'>
 
-                                    <div className='suggestion-name' onClick={()=>visit(convo.id)}>
+                                    <div className='suggestion-name' onClick={() => visit(convo.id)}>
                                         {convo.name}
                                     </div>
 
                                     {/* <div className='suggestion-horizontal-line'>
                             </div> */}
 
-                                    {/* <div className='suggestion-tag'>
+                                    <div className='suggestion-tag'>
                                         <div className='tag-icon'><FontAwesomeIcon icon={faTag} size='1x' /></div>
 
                                         <div className='suggestion-tag-text'>
-                                            {suggestion.source}
+                                            {convo.isFree ? 'Free' : 'Paid'}
+                                        </div>
+                                        <div className='suggestion-tag-text'>
+                                            {convo.isAdvanced ? 'Advanced' : 'Beginner'}
                                         </div>
 
-                                    </div> */}
+
+
+                                    </div>
 
                                 </div>
                                 <div className='suggestion-lower-part'>

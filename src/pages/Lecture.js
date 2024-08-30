@@ -7,6 +7,7 @@ import { faPaperPlane, faBars, faPlus, faSquarePlus, faHouse, faChalkboardUser }
 import '../css/Convo.css';
 import axios from 'axios';
 import ConvoLineList from '../components/lineLists/ConvoLineList';
+import LectureLineList from '../components/lineLists/LectureLineList';
 import TeacherConvo from './TeacherConvo';
 const Lecture = () => {
     const { userId, logout } = useAuth();
@@ -182,7 +183,8 @@ const Lecture = () => {
                     return;
                 }
                 // add the new current question in the messages
-                setMessages([...messages, { text: questionTexts[lecture.current_question], type: 'text', sender: 'user' }]);
+                setMessages([...messages, { text: "Your answer seems correct to me", type: 'text', sender: 'user' },
+                { text: questionTexts[lecture.current_question], type: 'text', sender: 'user' }]);
                 //increment the current_question in the lecture
                 setLecture({ ...lecture, current_question: lecture.current_question + 1 });
 
@@ -241,6 +243,9 @@ const Lecture = () => {
     useEffect(() => {
         loadLecture();
     }, []);
+    useEffect(() => {
+        loadLecture();
+    }, [id]);
 
 
     // parse response...............................................................................................
@@ -267,21 +272,21 @@ const Lecture = () => {
                 <div>
                     <button className='menu-button' onClick={handleLeftToggle}><FontAwesomeIcon icon={faBars} size='2x' /></button>
                 </div>
-                <div className='new-convo'>
+                {/* <div className='new-convo'>
                     <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>New Conversation</h3>
                     <button className='menu-button add-button'><FontAwesomeIcon icon={faSquarePlus} size='3x' /></button>
-                </div>
+                </div> */}
 
                 <div className={`${isLeftContracted ? 'convo-list-contracted' : ''}`}>
-                    <ConvoLineList />
+                    < LectureLineList current={id} />
                 </div>
 
 
 
                 <div className='new-convo last'>
                     {/* <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>Back-to home</h3> */}
-                    <button className='menu-button home-button' onClick={()=>toggleOverlay()}><FontAwesomeIcon icon={faChalkboardUser} size='2x' /></button>
-                    <button className='menu-button home-button'><FontAwesomeIcon icon={faHouse} size='2x' /></button>
+                    <button className='menu-button home-button' onClick={() => toggleOverlay()}><FontAwesomeIcon icon={faChalkboardUser} size='2x' /></button>
+                    <button className='menu-button home-button' onClick={() => navigate('/home')}><FontAwesomeIcon icon={faHouse} style={{ fontSize: '26px' }} /></button>
                 </div>
 
 

@@ -4,11 +4,12 @@ import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import SuggestionList from "../../components/lists/SuggestionList";
 import "../../css/All.css";
-
+import { useNavigate } from 'react-router-dom';
 
 const Suggestion = () => {
 
     const { userId } = useAuth();
+    const navigate = useNavigate(); 
     const [suggestions, setSuggestions] = useState([]);
 
     const mySuggestions = async () => {
@@ -24,10 +25,15 @@ const Suggestion = () => {
     useEffect(() => {
         mySuggestions();
     }, []);
+    useEffect(() => {
+        if (!userId) {
+            navigate('/');
+        }
+    }, []);
 
     return (
         <>
-            <Navbar></Navbar>
+            <Navbar />
             <div className="all-container">
                 <SuggestionList isAll={true} suggestions={suggestions} />
 

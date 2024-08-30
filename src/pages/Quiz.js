@@ -167,8 +167,12 @@ const Quiz = () => {
     }
 
     useEffect(() => {
-        if (score != 0)
+        if (score != 0 && isSubmitted){
             setShowScore(true);
+            submit();
+        }
+
+        
     }, [score])
 
 
@@ -214,10 +218,8 @@ const Quiz = () => {
     // render objects................................................................
 
     const submit = async (e) => {
-
-        setIsSubmitted(true);
         console.log(score)
-        showToast('success', 'Submitted successfully');
+        // showToast('success', 'Submitted successfully');
 
         // e.preventDefault();
         try {
@@ -254,7 +256,7 @@ const Quiz = () => {
         setSelectedOptions(selectedArray);
         setIsSubmitted(false);
         setShowScore(false);
-        showToast('info', 'Cleared all selections');
+        // showToast('info', 'Cleared all selections');
     }
 
 
@@ -272,10 +274,10 @@ const Quiz = () => {
                 <div>
                     <button className='menu-button' onClick={handleLeftToggle}><FontAwesomeIcon icon={faBars} size='2x' /></button>
                 </div>
-                <div className='new-convo'>
+                {/* <div className='new-convo'>
                     <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>New Quiz</h3>
                     <button className='menu-button add-button'><FontAwesomeIcon icon={faSquarePlus} size='2x' /></button>
-                </div>
+                </div> */}
 
                 <div className={`${isLeftContracted ? 'convo-list-contracted' : ''}`}>
                     <QuizLineList current={id} />
@@ -344,7 +346,7 @@ const Quiz = () => {
                     }
 
                     <div className='quiz-buttons'>
-                        <div className='quiz-button' onClick={() => submit()}>
+                        <div className='quiz-button' onClick={() => setIsSubmitted(true)}>
                             SUBMIT
                         </div>
                         <div className='quiz-button clear' onClick={() => clear()}>

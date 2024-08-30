@@ -1,6 +1,7 @@
 
 .tool-list-title{
     margin-top: 10px;
+    margin-right: 10px;
     text-align: left;
     padding: 10px;
     font-size: x-large;
@@ -21,16 +22,16 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    justify-content: center;
     
 }
 
 .tool-container{
-    width: 32%;
-    min-width: 200px;
+    width: 24%;
     /* border-left: 0.5px solid #24242454;
     border-right: 0.5px solid #24242454;    */
     margin-top: 10px;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     cursor: pointer;
 
@@ -62,7 +63,7 @@
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.514);
+    background-color: rgba(67, 181, 164, 0.678);
     border-radius: 20px;
    
     
@@ -73,6 +74,10 @@
 }
 .tool-name.red{
     background-color: rgba(255, 0, 0, 0.753);
+}
+
+.tool-name.green{
+    background-color: rgba(55, 138, 55, 0.753);
 }
 
 

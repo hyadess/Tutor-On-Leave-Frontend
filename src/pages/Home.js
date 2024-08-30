@@ -75,6 +75,12 @@ const Home = () => {
         }
     }
 
+    useEffect(() => {
+        if (!userId) {
+            navigate('/');
+        }
+    }, []);
+
             
 
 
@@ -91,7 +97,7 @@ const Home = () => {
         <div>
             <Navbar />
             <div className='home-center'>
-                <div className='home-starter'>
+                {/* <div className='home-starter'>
                     <div className='home-starter-text'>
                         <div className='heading'> WELCOME TO CODE TUTOR </div>
                         <div className='subheading'> LEARN WITH US </div>
@@ -104,7 +110,7 @@ const Home = () => {
                     </div>
 
 
-                </div>
+                </div> */}
 
                 <ToolList />
                 <SuggestionList isAll={false} suggestions={suggestions} />

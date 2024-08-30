@@ -59,16 +59,16 @@ const LectureList = (props) => {
         // now we are getting the updated suggestion from the data, update the suggestions where the id matches 
         const updatedLecture = response.data;
 
-        if( updatedLecture === null){
+        if (updatedLecture === null) {
             return;
         }
-        else{
-            if( updatedLecture.isStarred === true){
-                showToast('success', 'Lecture is highlighted');
-            }
-            else{
-                showToast('success', 'Lecture is unhighlighted');
-            }
+        else {
+            // if (updatedLecture.isStarred === true) {
+            //     showToast('success', 'Lecture is highlighted');
+            // }
+            // else {
+            //     showToast('success', 'Lecture is unhighlighted');
+            // }
         }
 
         const updatedLectures = lectures.map(lecture => {
@@ -90,9 +90,9 @@ const LectureList = (props) => {
         const updatedLectures = lectures.filter(lecture => lecture.id !== i);
         setLectures(updatedLectures);
         const message = response.data.message;
-        if( message === "Lecture deleted successfully"){
-            showToast('success', 'lecture is deleted');
-        }
+        // if (message === "Lecture deleted successfully") {
+        //     showToast('success', 'lecture is deleted');
+        // }
 
 
     }
@@ -126,7 +126,7 @@ const LectureList = (props) => {
                             See All
                         </div> : <></>
                     }
-                    </div>
+                </div>
 
                 <div className='suggestion-title-buttons'>
                     <div className={`suggestion-title-button ${selected == 'all' ? 'selected' : ''}`} onClick={() => setSelected('all')}> All</div>
@@ -140,30 +140,30 @@ const LectureList = (props) => {
                 {
                     lectures &&
                     lectures.map((lecture, index) => (
-                        (selected === 'all' || (selected === 'highlighted' && lecture.isStarred == true)) 
-                        && (props.isAll === true || (props.isAll === false && index < 7)) ?
+                        (selected === 'all' || (selected === 'highlighted' && lecture.isStarred == true))
+                            && (props.isAll === true || (props.isAll === false && index < 7)) ?
                             <div className='suggestion-container'>
                                 <div className='suggestion-text-container'>
 
-                                    <div className='suggestion-name' onClick={()=>visit(lecture.id)}>
+                                    <div className='suggestion-name green' onClick={() => visit(lecture.id)}>
                                         {lecture.topic}
                                     </div>
 
                                     {/* <div className='suggestion-horizontal-line'>
                             </div> */}
 
-                                    {/* <div className='suggestion-tag'>
-                                        <div className='tag-icon'><FontAwesomeIcon icon={faTag} size='1x' /></div>
+                                    <div className='suggestion-tag'>
+
 
                                         <div className='suggestion-tag-text'>
-                                            {suggestion.source}
+                                            {lecture.isAdvanced ? 'Advanced' : 'Beginner'}
                                         </div>
 
-                                    </div> */}
+                                    </div>
 
                                 </div>
                                 <div className='suggestion-lower-part'>
-                                    <ProgressBar percentage={(lecture.current_question -1)/lecture.total_questions*100} />
+                                    <ProgressBar percentage={(lecture.current_question - 1) / lecture.total_questions * 100} />
 
                                     {/* <div className='visition'>
                                         <div className={`visition-text ${suggestion.state > 2 ? 'visited' : ''}`}>

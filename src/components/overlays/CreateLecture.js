@@ -51,7 +51,7 @@ const CreateLecture = (props) => {
             props.toggleOverlay();
             setSessionName('');
             console.log(response);
-            navigate(`/conversation/${response.data.id}`);
+            navigate(`/lecture/${response.data.id}`);
         } catch (error) {
             console.error('Error creating conversation:', error.response ? error.response.data : error.message);
         }
@@ -86,14 +86,14 @@ const CreateLecture = (props) => {
                         />
                     </div>
                     <button className='name-submit-buttond' onClick={() => convoCreateRequest()}>
-                        <FontAwesomeIcon icon={faPaperPlane}/>
+                        <FontAwesomeIcon icon={faPaperPlane} size='xs'/>
                     </button>
                 </div>
 
                 <div className='create-convo-options'>
-                    <div className={`create-convo-option ${paid == 'FREE' ? '' : 'red'}`} onClick={() => togglePaid()}>
+                    {/* <div className={`create-convo-option ${paid == 'FREE' ? '' : 'red'}`} onClick={() => togglePaid()}>
                         {paid}
-                    </div>
+                    </div> */}
                     <div className={`create-convo-option ${hardness == 'BEGINNER' ? '' : 'red'}`} onClick={() => toggleHardness()}>
                         {hardness}
                     </div>
