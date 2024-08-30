@@ -9,6 +9,7 @@ import {
   faPlus,
   faSquarePlus,
   faHouse,
+  faUser,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -57,7 +58,7 @@ const Navbar = () => {
       </h2>
 
       <div className="flex items-center">
-        {userId !== null ? (
+        {userId === null ? (
           <div
             className="navbar-last button-text"
             onClick={() => navigate("/login")}
@@ -68,52 +69,44 @@ const Navbar = () => {
           <>
             <div className="navbar-button-container">
               <button
-                className={`navbar-button ${
-                  selected === "home" ? "selected" : ""
-                }`}
+                className={`navbar-button`}
                 onClick={() => homeClick()}
               >
                 HOME
               </button>
               <button
-                className={`navbar-button ${
-                  selected === "suggestion" ? "selected" : ""
-                }`}
+                className={`navbar-button`}
                 onClick={() => suggestionClick()}
               >
                 SUGGESTION
               </button>
               <button
-                className={`navbar-button ${
-                  selected === "lecture" ? "selected" : ""
-                }`}
+                className={`navbar-button`}
                 onClick={() => lectureClick()}
               >
                 LECTURE
               </button>
               <button
-                className={`navbar-button ${
-                  selected === "quiz" ? "selected" : ""
-                }`}
+                className={`navbar-button`}
                 onClick={() => quizClick()}
               >
                 QUIZ
               </button>
               <button
-                className={`navbar-button ${
-                  selected === "chatbot" ? "selected" : ""
-                }`}
+                className={`navbar-button`}
                 onClick={() => chatbotClick()}
               >
                 CHATBOT
               </button>
             </div>
-            <div>
+
+
+            <div className="navbar-last">
               <button
-                className="navbar-button"
+                className="user-button-container"
                 onClick={() => navigate(`/profile/${userId}`)}
               >
-                Profile
+                <FontAwesomeIcon icon={faUser} size="2x" />
               </button>
               <button className="user-button-container" onClick={handleLogout}>
                 <FontAwesomeIcon icon={faRightFromBracket} size="2x" />

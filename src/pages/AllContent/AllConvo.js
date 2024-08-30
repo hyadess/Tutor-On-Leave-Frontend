@@ -4,11 +4,13 @@ import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import ConvoList from "../../components/lists/ConvoList";
 import "../../css/All.css"
+import { useNavigate } from 'react-router-dom';
 
 const AllConvo = () => {
 
 
     const { userId } = useAuth();
+    const navigate = useNavigate();
     const [convos, setConvos] = useState([]);
     const myConvos = async () => {
         try {
@@ -21,7 +23,11 @@ const AllConvo = () => {
         }
     }
 
-
+    useEffect(() => {
+        if (!userId) {
+            navigate('/');
+        }
+    }, []);
 
 
     useEffect(() => {
@@ -31,7 +37,8 @@ const AllConvo = () => {
     return (
         <>
 
-            
+            <Navbar />
+
             <div className="all-container">
                 <ConvoList isAll={false} convos={convos} />
             </div>

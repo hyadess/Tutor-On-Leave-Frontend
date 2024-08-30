@@ -6,7 +6,7 @@
 
 .navbar-button-container{
     display: flex;
-    padding-left: 100px;
+    padding-left: 200px;
     width: 80%;
 }
 
@@ -16,8 +16,8 @@
 
 .navbar-button{
     padding: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 70px;
+    padding-right: 90px;
     
     cursor: pointer;
     font-weight: bold;
@@ -26,9 +26,10 @@
     text-decoration: none;
     transition-duration: 0.4s;
 }
-.navbar-button.selected{
-    background-color: rgb(26, 154, 20);
-    color: white;
+.navbar-button:hover{
+    color: rgb(172, 66, 66);
+    scale: 1.2;
+    font-weight: bolder;
 }
 
 .navbar-user-container{
@@ -44,10 +45,6 @@
     cursor: pointer;
 }
 
-.navbar-last:hover{
-    color: rgb(26, 154, 20);
-    
-}
 
 .button-text{
     font-weight: bold;
@@ -74,4 +71,14 @@
 .navbar-logo-name{
     padding-left: 20px;
     /* opacity: 0.7; */
+}
+
+.user-button-container{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.user-button-container:hover{
+    color: rgb(172, 66, 66);
+    scale: 1.2;
+    font-weight: bolder;
 }

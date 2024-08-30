@@ -7,10 +7,12 @@ import { faPaperPlane, faBars, faPlus, faSquarePlus, faHouse } from '@fortawesom
 import '../css/Convo.css';
 import axios from 'axios';
 import ConvoLineList from '../components/lineLists/ConvoLineList';
+import CreateConvo from '../components/overlays/CreateConvo';
 const Convo = () => {
   const { logout } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
+
 
   const handleLogout = () => {
     logout();
@@ -28,7 +30,9 @@ const Convo = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [needanswer, setNeedanswer] = useState(0);
+  const [isTutor, setIsTutor] = useState(false);
   const messageListRef = useRef(null);
+
 
   useEffect(() => {
     if (messageListRef.current) {
@@ -153,10 +157,10 @@ const Convo = () => {
         <div>
           <button className='menu-button' onClick={handleLeftToggle}><FontAwesomeIcon icon={faBars} size='2x' /></button>
         </div>
-        <div className='new-convo'>
+        {/* <div className='new-convo'>
           <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>New Conversation</h3>
-          <button className='menu-button add-button'><FontAwesomeIcon icon={faSquarePlus} size='2x' /></button>
-        </div>
+          <button className='menu-button add-button' onClick={() => setIsTutor(true)}><FontAwesomeIcon icon={faSquarePlus} size='2x' /></button>
+        </div> */}
 
         <div className={`${isLeftContracted ? 'convo-list-contracted' : ''}`}>
           <ConvoLineList current={id} />
@@ -168,6 +172,10 @@ const Convo = () => {
           {/* <h3 className={`new-convo-text ${isLeftContracted ? 'contracted' : ''}`}>Back-to home</h3> */}
           <button className='menu-button home-button' onClick={() => navigate('/home')}><FontAwesomeIcon icon={faHouse} style={{ fontSize: '26px' }} /></button>
         </div>
+
+        <CreateConvo isOverlayVisible={isTutor} toggleOverlay={() => setIsTutor(false)} />
+
+
 
 
       </div>

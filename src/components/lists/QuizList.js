@@ -18,73 +18,6 @@ import './../../css/Toast.css';
 
 const QuizList = (props) => {
 
-    // const quizes = [
-    //     {
-    //         "id": 1,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 1,
-    //     },
-    //     {
-    //         "id": 2,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 2,
-    //     },
-    //     {
-    //         "id": 3,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 3,
-    //     },
-    //     {
-    //         "id": 4,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 4,
-    //     },
-    //     {
-    //         "id": 5,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 4,
-    //     },
-    //     {
-    //         "id": 6,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 4,
-    //     },
-    //     {
-    //         "id": 7,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 3,
-    //     },
-    //     {
-    //         "id": 8,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 2,
-    //     },
-    //     {
-    //         "id": 9,
-    //         "title": "quiz 1",
-    //         "description": "quiz description",
-    //         "score": 75,
-    //         "state": 1,
-    //     },
-
-
-    // ]
     const { userId } = useAuth();
     const navigate = useNavigate();
     const [selected, setSelected] = useState('all')
@@ -92,17 +25,17 @@ const QuizList = (props) => {
 
     const showToast = (type, text) => {
         toast(text, {
-            type: { type }, // or 'success', 'error', 'warning', 'info'
-            position: 'top-right', // or 'top-left', 'bottom-left', 'bottom-right', 'top-center', 'bottom-center'
-            autoClose: 2000, // milliseconds
+            type: type, // Use `type` directly without curly braces
+            position: 'top-right',
+            autoClose: 2000, // Timeout in milliseconds
             hideProgressBar: false,
             className: 'toast-container',
-            bodyClassName: "toast-body",
+            bodyClassName: 'toast-body',
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-
+            onClose: () => toast.dismiss(), // Ensures the toast is dismissed properly
         });
     };
 
@@ -121,12 +54,12 @@ const QuizList = (props) => {
             return;
         }
         else{
-            if( updatedQuiz.state % 2 == 0){
-                showToast('success', 'Quiz is highlighted');
-            }
-            else{
-                showToast('success', 'Quiz is unhighlighted');
-            }
+            // if( updatedQuiz.state % 2 == 0){
+            //     showToast('success', 'Quiz is highlighted');
+            // }
+            // else{
+            //     showToast('success', 'Quiz is unhighlighted');
+            // }
         }
 
         const updatedQuizes = quizes.map(quiz => {
@@ -203,6 +136,13 @@ const QuizList = (props) => {
                                         <div className='suggestion-tag-text'>
                                             {((quiz.score/quiz.total_questions) * 100).toFixed(2)}% correct 
                                         </div>
+                                        <div className='suggestion-tag-text'>
+                                            {quiz.total_questions} questions
+                                        </div>
+                                        <div className='suggestion-tag-text'>
+                                            {quiz.isAdvanced ? 'Advanced' : 'Basic'}
+                                        </div>
+
 
                                     </div>
 

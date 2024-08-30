@@ -134,12 +134,12 @@ const SuggestionList = (props) => {
             return;
         }
         else{
-            if( updatedSuggestion.state % 2 == 0){
-                showToast('success', 'Suggestion is highlighted');
-            }
-            else{
-                showToast('success', 'Suggestion is unhighlighted');
-            }
+            // if( updatedSuggestion.state % 2 == 0){
+            //     showToast('success', 'Suggestion is highlighted');
+            // }
+            // else{
+            //     showToast('success', 'Suggestion is unhighlighted');
+            // }
         }
 
         const updatedSuggestions = suggestions.map(suggestion => {
@@ -166,12 +166,12 @@ const SuggestionList = (props) => {
             return;
         }
         else{
-            if( updatedSuggestion.state > 2){
-                showToast('success', 'Suggestion is visited');
-            }
-            else{
-                showToast('success', 'Suggestion is unvisited');
-            }
+            // if( updatedSuggestion.state > 2){
+            //     showToast('success', 'Suggestion is visited');
+            // }
+            // else{
+            //     showToast('success', 'Suggestion is unvisited');
+            // }
         }
 
         const updatedSuggestions = suggestions.map(suggestion => {
@@ -198,9 +198,9 @@ const SuggestionList = (props) => {
         const updatedSuggestions = suggestions.filter(suggestion => suggestion.id !== i);
         setSuggestions(updatedSuggestions);
         const message = response.data.message;
-        if( message === "suggestion deleted"){
-            showToast('success', 'Suggestion is deleted');
-        }
+        // if( message === "suggestion deleted"){
+        //     showToast('success', 'Suggestion is deleted');
+        // }
 
 
     }
@@ -249,7 +249,7 @@ const SuggestionList = (props) => {
                             <div className='suggestion-container'>
                                 <div className='suggestion-text-container'>
 
-                                    <div className='suggestion-name' onClick={()=>visit(suggestion.id,suggestion.link)}>
+                                    <div className='suggestion-name orange' onClick={()=>visit(suggestion.id,suggestion.link)}>
                                         {suggestion.placeholder}
                                     </div>
 

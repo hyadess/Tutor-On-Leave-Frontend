@@ -4,11 +4,13 @@ import LectureList from "../../components/lists/LectureList";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import "../../css/All.css"
+import { useNavigate } from 'react-router-dom';
 
 const AllLecture = () => {
 
 
     const { userId } = useAuth();
+    const navigate = useNavigate();
     const [lectures, setLectures] = useState([]);
     const myLectures = async () => {
         try {
@@ -24,10 +26,15 @@ const AllLecture = () => {
         myLectures();
 
     }, []);
+    useEffect(() => {
+        if (!userId) {
+            navigate('/');
+        }
+    }, []);
 
     return (
         <>
-            
+            <Navbar />
             <div className="all-container">
                 <LectureList isAll={true} lectures={lectures} />
             </div>

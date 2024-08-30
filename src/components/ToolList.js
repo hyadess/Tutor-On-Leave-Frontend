@@ -8,18 +8,20 @@ import axios from 'axios';
 import CreateConvo from './overlays/CreateConvo';
 import GetSuggestion from './overlays/GetSuggestion';
 import CreateQuiz from './overlays/CreateQuiz';
+import CreateLecture from './overlays/CreateLecture';
 
 
 const ToolList = () => {
 
     const { userId } = useAuth();
-    const [isTutor,setIsTutor] = useState(false);
+    const [isTutor, setIsTutor] = useState(false);
     const [isSuggestionsVisible, setSuggestionsVisible] = useState(false);
     const toggleSuggestionOverlay = () => {
         setSuggestionsVisible(!isSuggestionsVisible);
     }
     const [isQuizVisible, setQuizVisible] = useState(false);
-    
+    const [isLectureVisible, setLectureVisible] = useState(false);
+
 
 
     return (
@@ -35,7 +37,7 @@ const ToolList = () => {
             <div className='tool-list'>
 
 
-                <div className='tool-container' onClick={()=>setIsTutor(true)}>
+                <div className='tool-container' onClick={() => setIsTutor(true)}>
                     {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faChalkboard} size='1x' />
                     </div> */}
@@ -48,7 +50,7 @@ const ToolList = () => {
 
 
 
-                <div className='tool-container' onClick={()=>setQuizVisible(true)}>
+                <div className='tool-container' onClick={() => setQuizVisible(true)}>
                     {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faQuestion} size='1x' />
                     </div> */}
@@ -65,7 +67,7 @@ const ToolList = () => {
 
 
 
-                <div className='tool-container' onClick={()=>setSuggestionsVisible(true)}>
+                <div className='tool-container' onClick={() => setSuggestionsVisible(true)}>
                     {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faSubscript} size='1x' />
 
@@ -79,13 +81,13 @@ const ToolList = () => {
 
 
 
-                <div className='tool-container'>
+                <div className='tool-container' onClick={() => setLectureVisible(true)}>
                     {/* <div className='tool-image'>
                         <FontAwesomeIcon icon={faTrademark} size='1x' />
                     </div> */}
                     <div className='tool-text'>
-                        <div className='tool-name'>
-                            Tutor Pro
+                        <div className='tool-name green'>
+                            Lecture Builder
                         </div>
                     </div>
                 </div>
@@ -96,10 +98,11 @@ const ToolList = () => {
             </div>
 
 
-            <CreateConvo isOverlayVisible={isTutor} toggleOverlay={()=>setIsTutor(false)}/>
+            <CreateConvo isOverlayVisible={isTutor} toggleOverlay={() => setIsTutor(false)} />
             <GetSuggestion isOverlayVisible={isSuggestionsVisible} toggleOverlay={toggleSuggestionOverlay} />
-            <CreateQuiz isOverlayVisible={isQuizVisible} toggleOverlay={()=>setQuizVisible(!isQuizVisible)} />
-            
+            <CreateQuiz isOverlayVisible={isQuizVisible} toggleOverlay={() => setQuizVisible(!isQuizVisible)} />
+            <CreateLecture isOverlayVisible={isLectureVisible} toggleOverlay={() => setLectureVisible(!isLectureVisible)} />
+
 
         </div>
 

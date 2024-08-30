@@ -106,9 +106,9 @@ const CreateQuiz = (props) => {
                     </div>
 
                     <div className='create-convo-options'>
-                        <div className={`create-convo-option ${paid == 'FREE' ? '' : 'red'}`} onClick={() => togglePaid()}>
+                        {/* <div className={`create-convo-option ${paid == 'FREE' ? '' : 'red'}`} onClick={() => togglePaid()}>
                             {paid}
-                        </div>
+                        </div> */}
                         <div className={`create-convo-option ${hardness == 'BEGINNER' ? '' : 'red'}`} onClick={() => toggleHardness()}>
                             {hardness}
                         </div>

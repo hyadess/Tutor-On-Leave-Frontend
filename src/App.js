@@ -39,11 +39,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 function AppContent() {
-  const location = useLocation();
-  const hideNavbarPaths = ["/login", "/signup"];
+
   return (
-    <>
-      {!hideNavbarPaths.includes(location.pathname) && <Navbar />}
+
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -58,7 +56,6 @@ function AppContent() {
         <Route path="/allconvo" element={<AllConvo />} />
         <Route path="/profile/:id" element={<Profile />} />
       </Routes>
-    </>
   );
 }
 
